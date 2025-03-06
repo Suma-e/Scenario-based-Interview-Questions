@@ -1,0 +1,8 @@
+data1=((1,"a",10000),(2,"b",5000),(3,"c",15000),(4,"d",25000),(5,"e",50000),(6,"f",7000))
+myschema=("empid","name","salary")
+
+df=createdataFrame(data1,schema=myschema)
+df.show()
+
+#DSL
+final=df.withColumn("Designation",expr("case when salary>10000 then 'manager' else 'employee' end")).show()
